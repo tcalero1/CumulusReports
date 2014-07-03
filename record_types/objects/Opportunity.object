@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <businessProcesses>
+        <fullName>Donation</fullName>
+        <isActive>true</isActive>
+        <values>
+            <fullName>Closed Lost</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pledged</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Posted</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Prospecting</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Withdrawn</fullName>
+            <default>false</default>
+        </values>
+    </businessProcesses>
+    <fields>
+        <fullName>StageName</fullName>
+        <picklist>
+            <picklistValues>
+                <fullName>Prospecting</fullName>
+                <closed>false</closed>
+                <default>false</default>
+                <forecastCategory>Pipeline</forecastCategory>
+                <probability>0</probability>
+                <won>false</won>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Pledged</fullName>
+                <closed>false</closed>
+                <default>false</default>
+                <forecastCategory>Pipeline</forecastCategory>
+                <probability>50</probability>
+                <won>false</won>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Posted</fullName>
+                <closed>true</closed>
+                <default>false</default>
+                <forecastCategory>Closed</forecastCategory>
+                <probability>100</probability>
+                <won>true</won>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Withdrawn</fullName>
+                <closed>true</closed>
+                <default>false</default>
+                <forecastCategory>Omitted</forecastCategory>
+                <probability>0</probability>
+                <won>false</won>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Closed Lost</fullName>
+                <closed>true</closed>
+                <default>false</default>
+                <forecastCategory>Omitted</forecastCategory>
+                <probability>0</probability>
+                <won>false</won>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <recordTypes>
+        <fullName>Donation</fullName>
+        <active>true</active>
+        <businessProcess>Donation</businessProcess>
+        <description>Donation Received</description>
+        <label>Donation</label>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Grant</fullName>
+        <active>true</active>
+        <businessProcess>Donation</businessProcess>
+        <description>Grant Received</description>
+        <label>Grant</label>
+    </recordTypes>
+    <recordTypes>
+        <fullName>MajorGift</fullName>
+        <active>true</active>
+        <businessProcess>Donation</businessProcess>
+        <description>Large Donation from a Major Donor</description>
+        <label>Major Gift</label>
+    </recordTypes>
+    <recordTypes>
+        <fullName>MatchingDonation</fullName>
+        <active>true</active>
+        <businessProcess>Donation</businessProcess>
+        <description>Matching Donation from an Donor&apos;s Employer or other Organization</description>
+        <label>Matching Donation</label>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Membership</fullName>
+        <active>true</active>
+        <businessProcess>Donation</businessProcess>
+        <description>A membership record type</description>
+        <label>Membership</label>
+    </recordTypes>
+</CustomObject>

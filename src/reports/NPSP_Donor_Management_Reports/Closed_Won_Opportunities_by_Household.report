@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
     <columns>
-        <field>FK_NAME</field>
+        <field>ACCOUNT.NAME</field>
     </columns>
     <columns>
         <field>OPPORTUNITY.NAME</field>
@@ -65,7 +65,7 @@
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>FK_CUSTENT_ID</field>
+        <field>ACCOUNT_ID</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>Closed Won Opportunities by Household</name>
@@ -77,7 +77,7 @@
         <name>co</name>
         <value>1</value>
     </params>
-    <reportType>OpportunityContact@Contact.npo02__Household__c</reportType>
+    <reportType>OpportunityContact</reportType>
     <scope>organization</scope>
     <showDetails>true</showDetails>
     <timeFrameFilter>
