@@ -5,7 +5,7 @@
         <developerName>BucketField_60508857</developerName>
         <masterLabel>Giving Range</masterLabel>
         <nullTreatment>z</nullTreatment>
-        <sourceColumnName>npo02__Household__c.npo02__TotalOppAmount__c</sourceColumnName>
+        <sourceColumnName>Account.npo02__TotalOppAmount__c</sourceColumnName>
         <useOther>false</useOther>
         <values>
             <sourceValues>
@@ -67,44 +67,46 @@
         <titleSize>18</titleSize>
     </chart>
     <columns>
-        <field>CUST_NAME</field>
+        <field>Account.Name</field>
     </columns>
     <columns>
-        <field>npo02__Household__c.npo02__Formal_Greeting__c</field>
+        <field>Account.npo02__Formal_Greeting__c</field>
     </columns>
     <columns>
-        <field>npo02__Household__c.npo02__Informal_Greeting__c</field>
+        <field>Account.npo02__Informal_Greeting__c</field>
     </columns>
     <columns>
-        <field>npo02__Household__c.npo02__TotalOppAmount__c</field>
+        <field>Account.npo02__TotalOppAmount__c</field>
     </columns>
     <columns>
-        <field>npo02__Household__c.npo02__Best_Gift_Year__c</field>
+        <field>Account.npo02__Best_Gift_Year__c</field>
     </columns>
     <columns>
-        <field>npo02__Household__c.npo02__Best_Gift_Year_Total__c</field>
+        <field>Account.npo02__Best_Gift_Year_Total__c</field>
     </columns>
     <columns>
-        <field>npo02__Household__c.npo02__MailingStreet__c</field>
+        <field>Account.BillingStreet</field>
     </columns>
     <columns>
-        <field>npo02__Household__c.npo02__MailingCity__c</field>
+        <field>Account.BillingCity</field>
     </columns>
     <columns>
-        <field>npo02__Household__c.npo02__MailingState__c</field>
+        <field>Account.BillingState</field>
     </columns>
     <columns>
-        <field>npo02__Household__c.npo02__MailingPostalCode__c</field>
-    </columns>
-    <columns>
-        <field>npo02__Household__c.npo02__HouseholdEmail__c</field>
+        <field>Account.BillingPostalCode</field>
     </columns>
     <description>Household giving broken down and grouped by giving range.</description>
     <filter>
         <criteriaItems>
-            <column>npo02__Household__c.npo02__TotalOppAmount__c</column>
+            <column>Account.npo02__TotalOppAmount__c</column>
             <operator>greaterThan</operator>
             <value>0</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.npe01__SYSTEM_AccountType__c</column>
+            <operator>equals</operator>
+            <value>Household Account</value>
         </criteriaItems>
     </filter>
     <format>Summary</format>
@@ -118,11 +120,11 @@
         <name>co</name>
         <value>1</value>
     </params>
-    <reportType>CustomEntity$npo02__Household__c</reportType>
+    <reportType>AccountList</reportType>
     <scope>organization</scope>
     <showDetails>true</showDetails>
     <timeFrameFilter>
-        <dateColumn>npo02__Household__c.npo02__FirstCloseDate__c</dateColumn>
+        <dateColumn>Account.npo02__FirstCloseDate__c</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>
     </timeFrameFilter>
 </Report>

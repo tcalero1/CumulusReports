@@ -41,7 +41,7 @@
         <members>NPSP_Donor_Management_Reports/Top_10_Household_Donors</members>
         <members>NPSP_Donor_Management_Reports/Top_10_Open_Opportunities</members>
         <members>NPSP_Donor_Management_Reports/Top_15_Won_Opps</members>
-        <members>NPSP_Donor_Management_Reports/TotalGift_by_Household_State</members>
+        <members>NPSP_Donor_Management_Reports/TotalGifts_by_Household_State</members>
         <members>NPSP_Donor_Management_Reports/TotalGifts_by_Household_Zip</members>
         <members>NPSP_Donor_Management_Reports/Total_Donations_by_Month</members>
         <members>NPSP_Donor_Management_Reports/Total_Donations_last_FY</members>

@@ -43,16 +43,16 @@
         <field>Contact.npo02__TotalOppAmount__c</field>
     </columns>
     <columns>
-        <field>FK_$npo02__Household__c.npo02__TotalOppAmount__c</field>
+        <field>Account.npo02__TotalOppAmount__c</field>
     </columns>
     <columns>
-        <field>FK_NAME</field>
+        <field>Account.Name</field>
     </columns>
     <columns>
-        <field>FK_$npo02__Household__c.npo02__Informal_Greeting__c</field>
+        <field>Account.npo02__Informal_Greeting__c</field>
     </columns>
     <columns>
-        <field>FK_$npo02__Household__c.npo02__Formal_Greeting__c</field>
+        <field>Account.npo02__Formal_Greeting__c</field>
     </columns>
     <description>All gifts last month, grouped by donor.</description>
     <filter>
@@ -65,6 +65,11 @@
             <column>PRIMARY</column>
             <operator>equals</operator>
             <value>1</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.npe01__SYSTEM_AccountType__c</column>
+            <operator>equals</operator>
+            <value>HouseholdAccount</value>
         </criteriaItems>
     </filter>
     <format>Summary</format>
@@ -82,7 +87,7 @@
         <name>co</name>
         <value>1</value>
     </params>
-    <reportType>OpportunityContact@Contact.npo02__Household__c</reportType>
+    <reportType>OpportunityContact</reportType>
     <scope>organization</scope>
     <showDetails>true</showDetails>
     <timeFrameFilter>

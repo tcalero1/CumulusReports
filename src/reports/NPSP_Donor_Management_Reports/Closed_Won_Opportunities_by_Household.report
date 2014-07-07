@@ -61,6 +61,11 @@
             <operator>equals</operator>
             <value>1</value>
         </criteriaItems>
+        <criteriaItems>
+            <column>Account.npe01__SYSTEM_AccountType__c</column>
+            <operator>equals</operator>
+            <value>Household Account</value>
+        </criteriaItems>
     </filter>
     <format>Summary</format>
     <groupingsDown>
