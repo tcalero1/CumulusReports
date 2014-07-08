@@ -36,7 +36,7 @@
             <indicatorHighColor>#54C254</indicatorHighColor>
             <indicatorLowColor>#C25454</indicatorLowColor>
             <indicatorMiddleColor>#C2C254</indicatorMiddleColor>
-            <report>NPSP_Grants_Management_Reports/Total_Grants_Received</report>
+            <report>NPSP3_Grants_Management_Reports/Total_Grants_Received</report>
             <showPercentage>true</showPercentage>
             <showTotal>true</showTotal>
             <showValues>false</showValues>
@@ -69,7 +69,7 @@
             <groupingColumn>STAGE_NAME</groupingColumn>
             <header>Grant Pipeline Planning</header>
             <legendPosition>Bottom</legendPosition>
-            <report>NPSP_Grants_Management_Reports/Grant_Pipeline_Planning</report>
+            <report>NPSP3_Grants_Management_Reports/Grant_Pipeline_Planning</report>
             <showPercentage>false</showPercentage>
             <showValues>false</showValues>
             <sortBy>RowLabelAscending</sortBy>
@@ -91,7 +91,7 @@
             <indicatorLowColor>#C25454</indicatorLowColor>
             <indicatorMiddleColor>#C2C254</indicatorMiddleColor>
             <maxValuesDisplayed>10</maxValuesDisplayed>
-            <report>NPSP_Grants_Management_Reports/Total_Grants_Received</report>
+            <report>NPSP3_Grants_Management_Reports/Total_Grants_Received</report>
             <showPicturesOnTables>true</showPicturesOnTables>
             <sortBy>RowValueAscending</sortBy>
             <title>Top 10 Grants by Amount</title>

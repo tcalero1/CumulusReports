@@ -23,7 +23,7 @@
             <groupingColumn>CAMPAIGN_NAME</groupingColumn>
             <header>Return on Investment (ROI)</header>
             <legendPosition>Bottom</legendPosition>
-            <report>NPSP_Donor_Management_Reports/Campaign_Metrics</report>
+            <report>NPSP3_Donor_Management_Reports/Campaign_Metrics</report>
             <showPercentage>false</showPercentage>
             <showValues>true</showValues>
             <sortBy>RowLabelAscending</sortBy>
@@ -45,7 +45,7 @@
             <groupingColumn>CAMPAIGN_NAME</groupingColumn>
             <header>Net Per Donor</header>
             <legendPosition>Bottom</legendPosition>
-            <report>NPSP_Donor_Management_Reports/Campaign_Metrics</report>
+            <report>NPSP3_Donor_Management_Reports/Campaign_Metrics</report>
             <showPercentage>false</showPercentage>
             <showValues>true</showValues>
             <sortBy>RowLabelAscending</sortBy>
@@ -70,7 +70,7 @@
             <groupingColumn>CAMPAIGN_NAME</groupingColumn>
             <header>Cost Per Donor (CPD)</header>
             <legendPosition>Bottom</legendPosition>
-            <report>NPSP_Donor_Management_Reports/Campaign_Metrics</report>
+            <report>NPSP3_Donor_Management_Reports/Campaign_Metrics</report>
             <showPercentage>false</showPercentage>
             <showValues>true</showValues>
             <sortBy>RowLabelAscending</sortBy>
@@ -93,7 +93,7 @@
             <groupingColumn>CAMPAIGN_NAME</groupingColumn>
             <header>Total Donations</header>
             <legendPosition>Bottom</legendPosition>
-            <report>NPSP_Donor_Management_Reports/Campaign_Metrics</report>
+            <report>NPSP3_Donor_Management_Reports/Campaign_Metrics</report>
             <showPercentage>false</showPercentage>
             <showValues>true</showValues>
             <sortBy>RowLabelAscending</sortBy>
@@ -118,7 +118,7 @@
             <groupingColumn>CAMPAIGN_NAME</groupingColumn>
             <header>Cost Per Dollar Raised</header>
             <legendPosition>Bottom</legendPosition>
-            <report>NPSP_Donor_Management_Reports/Campaign_Metrics</report>
+            <report>NPSP3_Donor_Management_Reports/Campaign_Metrics</report>
             <showPercentage>false</showPercentage>
             <showValues>true</showValues>
             <sortBy>RowLabelAscending</sortBy>
