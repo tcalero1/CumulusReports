@@ -117,7 +117,7 @@
         <field>Account.BillingState</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>Total Gift by Household State</name>
+    <name>Total Gifts by Household State</name>
     <params>
         <name>co</name>
         <value>1</value>
