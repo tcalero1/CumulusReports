@@ -215,11 +215,7 @@ class PackageUpload(object):
         self.refresh()
         start_url = '%s/secur/frontdoor.jsp?sid=%s' % (self.instance_url, self.access_token)
 
-        desired_capabilities = webdriver.DesiredCapabilities.FIREFOX
-
-        driver = webdriver.Firefox(
-            desired_capabilities=desired_capabilities,
-        )
+        driver = webdriver.Firefox()
         driver.get(start_url)
         return driver
 
