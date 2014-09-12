@@ -6,8 +6,7 @@
     <name>BusinessProcess</name>
   </types>
   <types>
-    <members>objects</members>
-    <members>objects/Opportunity</members>
+    <members>Opportunity</members>
     <name>CustomObject</name>
   </types>
   <types>

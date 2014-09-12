@@ -298,9 +298,11 @@
                   <basename property="component_file" file="@{file}" />
                   <propertyregex property="component" input="${component_file}" regexp="(.*)\.(.*)" select="\1" />
 
-                  <!-- get the component file's parent directory.  if the parent is not the typedir, include it (i.e. Reports and Dashboards) -->
+                  <!-- get the component file's parent directory.  if the parent is not the metatype, include it (i.e. Reports and Dashboards) -->
                   <dirname property="component_file_dirname" file="@{file}" />
                   <basename property="component_file_parent" file="${component_file_dirname}" />
+
+                  <echo>DEBUG: ${metatype} ${component_file_parent}</echo>
 
                   <!-- If the file is not in the exclude list, add it to the package.xml -->
                   <if>
@@ -308,7 +310,7 @@
                     <then>
                       <!-- Write the <members/> element -->
                       <if>
-                        <equals arg1="@{typedir}" arg2="${component_file_parent}" />
+                        <equals arg1="${metatype}" arg2="${component_file_parent}" />
                         <then>
                           <echo file="@{xmlfile}" append="true">    &lt;members&gt;${component}&lt;/members&gt;${line.separator}</echo>
                         </then>
