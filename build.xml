@@ -23,6 +23,8 @@
     </if>
     
     <!-- If there are environment variables set, consider them an override for org credentials -->
+    <property environment="env" />
+
     <if>
       <isset property="env.SF_USERNAME" />
       <then>
