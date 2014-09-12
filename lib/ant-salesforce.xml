@@ -224,6 +224,7 @@
         </path>
         <sequential>
           <basename property="metatype" file="@{typedir}" />
+          <echo>DEBUG: metadata = ${metatype}</echo>
 
           <!-- Map dir name to a metadata type name.  This also serves as a whitelist for which metadata types to add.  If a mapping is not listed, the type is not added to the package.xml -->
           <!-- FIXME: Is there a cleaner way to do this so the mapping could live in a separate file? -->
@@ -237,6 +238,9 @@
             </case>
             <case value="components">
               <property name="typename" value="ApexComponent" />
+            </case>
+            <case value="dashboards">
+              <property name="typename" value="Dashboards" />
             </case>
             <case value="labels">
               <property name="typename" value="CustomLabel" />
@@ -256,6 +260,9 @@
             <case value="remoteSiteSettings">
               <property name="typename" value="RemoteSiteSetting" />
             </case>
+            <case value="reports">
+              <property name="typename" value="Reports" />
+            </case>
             <case value="staticresources">
               <property name="typename" value="StaticResource" />
             </case>
@@ -272,6 +279,8 @@
             <isset property="typename" />
             <then>
 
+              <var name="parents_included" unset="true" />
+
               <!-- Write a new <types/> section for the meta type -->
               <echo file="@{xmlfile}" append="true">  &lt;types&gt;${line.separator}</echo>
 
@@ -279,20 +288,46 @@
               <for param="file">
                 <path>
                   <!-- exclude xml files and namespaced metadata files as well as any manual excludes -->
-                  <fileset dir="@{typedir}" includes="**/*" excludes="*.xml *__*__c.object @{exclude}" />
+                  <fileset dir="@{typedir}" includes="**/*.*" excludes="*.xml *__*__c.object @{exclude}" />
                 </path>
                 <sequential>
+                  <echo>DEBUG: file = @{file}</echo>
+                  <var name="component_file" unset="true" />
+                  <var name="component_file_dirname" unset="true" />
+                  <var name="component_file_parent" unset="true" />
+
                   <!-- get basename and basename without suffix for file. propertyregex is used since we don't know the file suffix from only the dir name (i.e. classes vs .class) -->
                   <basename property="component_file" file="@{file}" />
                   <propertyregex property="component" input="${component_file}" regexp="(.*)\.(.*)" select="\1" />
+
+                  <!-- get the component file's parent directory.  if the parent is not the typedir, include it (i.e. Reports and Dashboards) -->
+                  <dirname property="component_file_dirname" file="@{file}" />
+                  <basename property="component_file_parent" file="${component_file_dirname}" />
+                  <echo>DEBUG: ${component_file_dirname}</echo>
+                  <echo>DEBUG: ${component_file_parent}</echo>
 
                   <!-- If the file is not in the exclude list, add it to the package.xml -->
                   <if>
                     <not><contains string="@{exclude}" substring="${component_file}" /></not>
                     <then>
                       <!-- Write the <members/> element -->
-                      <echo file="@{xmlfile}" append="true">    &lt;members&gt;${component}&lt;/members&gt;${line.separator}</echo>
-    
+                      <if>
+                        <equals arg1="@{typedir}" arg2="${component_file_parent}" />
+                        <then>
+                          <echo file="@{xmlfile}" append="true">    &lt;members&gt;${component}&lt;/members&gt;${line.separator}</echo>
+                        </then>
+                        <else>
+                          <!-- This type contains metadata grouped into subdirectories under typedir.  Include the dir once and prefix all files with it -->
+                          <if>
+                            <not><contains string="${parents_included}" substring=",${component_file_parent}," /></not>
+                            <then>
+                              <echo file="@{xmlfile}" append="true">    &lt;members&gt;${component_file_parent}&lt;/members&gt;${line.separator}</echo>
+                              <var name="parents_included" value="${parents_included},${component_file_parent}," />
+                            </then>
+                          </if>
+                          <echo file="@{xmlfile}" append="true">    &lt;members&gt;${component_file_parent}/${component}&lt;/members&gt;${line.separator}</echo>
+                        </else>
+                      </if> 
                     </then>
                   </if>
 
