@@ -21,6 +21,26 @@
         <loadproperties srcFile="${basedir}/build.properties"/>
       </then>
     </if>
+    
+    <!-- If there are environment variables set, consider them an override for org credentials -->
+    <if>
+      <isset property="env.SF_USERNAME">
+      <then>
+        <var name="sf.username" value="${env.SF_USERNAME}" />
+      </then>
+    </if>
+    <if>
+      <isset property="env.SF_PASSWORD">
+      <then>
+        <var name="sf.password" value="${env.SF_PASSWORD}" />
+      </then>
+    </if>
+    <if>
+      <isset property="env.SF_SERVERURL">
+      <then>
+        <var name="sf.serverurl" value="${env.SF_SERVERURL}" />
+      </then>
+    </if>
 
 
     <!-- Load up the version.properties file to get desired versions -->
