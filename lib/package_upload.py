@@ -206,6 +206,7 @@ class PackageUpload(object):
     def refresh(self):
         sf = SalesforceOAuth2(self.oauth_client_id, self.oauth_client_secret, self.oauth_callback_url)
         refresh_response = sf.refresh_token(self.refresh_token)
+        print refresh_response
         if refresh_response.get('access_token', None):
             self.access_token = refresh_response['access_token']
 
