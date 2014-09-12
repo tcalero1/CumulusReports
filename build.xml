@@ -14,7 +14,7 @@
     <!-- If no propertyfile was passed in command line, attempt to load a build.properties if it exists -->
     <if>
       <and>
-        <not><isset property="sf:username" /></not>
+        <not><isset property="sf.username" /></not>
         <available file="${basedir}/build.properties" />
       </and>
       <then>
@@ -24,19 +24,19 @@
     
     <!-- If there are environment variables set, consider them an override for org credentials -->
     <if>
-      <isset property="env.SF_USERNAME">
+      <isset property="env.SF_USERNAME" />
       <then>
         <var name="sf.username" value="${env.SF_USERNAME}" />
       </then>
     </if>
     <if>
-      <isset property="env.SF_PASSWORD">
+      <isset property="env.SF_PASSWORD" />
       <then>
         <var name="sf.password" value="${env.SF_PASSWORD}" />
       </then>
     </if>
     <if>
-      <isset property="env.SF_SERVERURL">
+      <isset property="env.SF_SERVERURL" />
       <then>
         <var name="sf.serverurl" value="${env.SF_SERVERURL}" />
       </then>
