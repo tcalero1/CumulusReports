@@ -233,6 +233,9 @@ build_name = os.environ.get('BUILD_NAME')
 build_commit = os.environ.get('BUILD_COMMIT')
 build_workspace = os.environ.get('BUILD_WORKSPACE')
 
+print 'DEBUG: client_id = %s' % oauth_client_id
+print 'DEBUG: callback_url = %s' % oauth_callback_url
+
 uploader = PackageUpload(instance_url, refresh_token, package, oauth_client_id, oauth_client_secret, oauth_callback_url)
 uploader.build_package(build_name)
 
