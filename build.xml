@@ -17,6 +17,28 @@
       </then>
     </if>
 
+    <!-- If there are environment variables set, consider them an override for org credentials -->
+    <property environment="env" />
+
+    <if>
+      <isset property="env.SF_USERNAME" />
+      <then>
+        <var name="sf.username" value="${env.SF_USERNAME}" />
+      </then>
+    </if>
+    <if>
+      <isset property="env.SF_PASSWORD" />
+      <then>
+        <var name="sf.password" value="${env.SF_PASSWORD}" />
+      </then>
+    </if>
+    <if>
+      <isset property="env.SF_SERVERURL" />
+      <then>
+        <var name="sf.serverurl" value="${env.SF_SERVERURL}" />
+      </then>
+    </if>
+
     <!-- Load up cumulusci.properties file with package specific properties -->
     <loadproperties srcFile="${basedir}/cumulusci.properties"/>
 
@@ -291,7 +313,6 @@ npsprep_df14_1: ${InstalledPackage.npsprep_df14_1.versionNumber} (${version.npsp
     <!-- Deploys the latest managed beta (UAT) release to an org -->
     <!-- !!!WARNING!!!: DO NOT run this against a real production org as it will delete everything.  It is designed to clear the target org to ensure a clean build test. -->
     <target name="deployManagedUAT">
-      <property environment="env" />
 
       <echo>BUILD_COMMIT = ${env.BUILD_COMMIT}</echo>
       <if>
@@ -356,7 +377,6 @@ npsprep_df14_1: ${InstalledPackage.npsprep_df14_1.versionNumber} (${version.npsp
     <!-- Deploys the latest production managed release to an org -->
     <!-- !!!WARNING!!!: DO NOT run this against a real production org as it will delete everything.  It is designed to clear the target org to ensure a clean build test. -->
     <target name="deployManaged">
-      <property environment="env" />
 
       <echo>BUILD_COMMIT = ${env.BUILD_COMMIT}</echo>
       <if>
