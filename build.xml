@@ -43,10 +43,6 @@
         <var name="sf.serverurl" value="${env.SF_SERVERURL}" />
       </then>
     </if>
-    
-    <echo>DEBUG: sf.serverurl = ${sf.serverurl}</echo>
-    <echo>DEBUG: env.SF_SERVERURL = ${env.SF_SERVERURL}</echo>
-
 
     <!-- Load up the version.properties file to get desired versions -->
     <loadproperties srcFile="${basedir}/version.properties"/>
