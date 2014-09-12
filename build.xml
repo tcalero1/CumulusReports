@@ -295,7 +295,10 @@ npsprep_df14_1: ${InstalledPackage.npsprep_df14_1.versionNumber} (${version.npsp
       <antcall target="updatePackageXmlManaged" />
 
       <!-- Do a deploy skipping tests for now since the upload will run tests -->
+      <!--
       <antcall target="deploy" />
+      -->
+      <antcall target="deployWithoutTest" />
 
       <!-- Finally, delete any metadata from the org which is not in the repo -->
       <antcall target="destroyStaleMetadata" />
