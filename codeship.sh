@@ -53,7 +53,7 @@ if [ $BUILD_TYPE == "master" ]; then
     ant deployCIPackageOrg
     
     # Upload beta package
-    export PACKAGE=`bash lib/parser.sh cumulusci.package.name.managed cumulusci.properties`
+    export PACKAGE=`grep cumulusci.package.name.managed cumulusci.properties | sed -e 's/cumulusci.package.name.managed=//g'`
     export BUILD_NAME="$PACKAGE Build $CI_BUILD_NUMBER"
     export BUILD_WORKSPACE=`pwd`
     export BUILD_COMMIT="$CI_COMMIT_ID"
