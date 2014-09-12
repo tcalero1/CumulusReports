@@ -141,13 +141,7 @@
         <name>CustomTab</name>
     </types>
     <types>
-        <members>NPSP_Donor_Management_Dashboard</members>
-        <members>NPSP_Donor_Management_Dashboard/NPSP_Campaign_Metrics</members>
-        <members>NPSP_Donor_Management_Dashboard/NPSP_Donation_Forecasting_Dashboard</members>        
-        <members>NPSP_Grants_Management_Dashboard</members>
-        <members>NPSP_Grants_Management_Dashboard/NPSP_Grants_Management_Dashboard</members>
-        <members>NPSP_Membership_Management_Dashboard</members>
-        <members>NPSP_Membership_Management_Dashboard/NPSP_Membership_Dashboard</members>
+        <members>*</members>
         <name>Dashboard</name>
     </types>
     <types>
@@ -229,36 +223,7 @@
         <name>KnowledgeSettings</name>
     </types>
     <types>
-        <members>Account-Household Layout</members>
-        <members>npsp__Account-Organization Layout</members>
-        <members>npsp__Address__c-Address Layout</members>
-        <members>npsp__Batch__c-Batch Layout</members>
-        <members>npsp__Contact-Contact Layout</members>
-        <members>npsp__Error__c-Error Layout</members>
-        <members>npsp__Opportunity-Donation Layout</members>
-        <members>npsp__Opportunity-Membership Layout</members>
-        <members>npsp__Schedulable__c-Schedulable Layout</members>
-        <members>npsp__Trigger_Handler__c-Trigger Handler Layout</members>
-        <members>Asset-Asset Layout</members>
-        <members>Case-Case Layout</members>
-        <members>Lead-Lead Layout</members>
-        <members>Solution-Solution Layout</members>
-        <members>Campaign-Campaign Layout</members>
-        <members>CaseClose-Close Case Layout</members>
-        <members>OpportunityLineItem-Opportunity Product Layout.layout Task-Task Layout</members>
-        <members>CampaignMember-Campaign Member Page Layout</members>
-        <members>Contract-Contract Layout</members>
-        <members>Pricebook2-Price Book Layout</members>
-        <members>User-User Layout</members>
-        <members>Case-Case %28Marketing%29 Layout</members>
-        <members>Event-Event Layout</members>
-        <members>Product2-Product Layout</members>
-        <members>Case-Case %28Sales%29 Layout</members>
-        <members>Global-Global Layout</members>
-        <members>SocialPersona-Social Persona Layout</members>
-        <members>Case-Case %28Support%29 Layout</members>
-        <members>Idea-Idea Layout</members>
-        <members>SocialPost-Social Post Layout</members>
+        <members>*</members>
         <name>Layout</name>
     </types>
     <types>
@@ -368,55 +333,7 @@
         <name>RemoteSiteSetting</name>
     </types>
     <types>
-        <members>NPSP_Donor_Management_Reports</members>
-        <members>NPSP_Donor_Management_Reports/Campaign_Metrics</members>
-        <members>NPSP_Donor_Management_Reports/Closed_Won_Opportunities_by_Household</members>
-        <members>NPSP_Donor_Management_Reports/Contact_Giving_by_Best_Gift_Year</members>
-        <members>NPSP_Donor_Management_Reports/Contact_LYBUNT</members>
-        <members>NPSP_Donor_Management_Reports/Contact_SYBUNT</members>
-        <members>NPSP_Donor_Management_Reports/Contacts_with_Donation_soft_credits</members>
-        <members>NPSP_Donor_Management_Reports/Contacts_with_Donations</members>
-        <members>NPSP_Donor_Management_Reports/Contacts_with_Donations_last_year</members>
-        <members>NPSP_Donor_Management_Reports/Contacts_with_Donations_this_year</members>
-        <members>NPSP_Donor_Management_Reports/Donations_by_Contact_State</members>
-        <members>NPSP_Donor_Management_Reports/Donations_by_Contact_Zip_this_year</members>
-        <members>NPSP_Donor_Management_Reports/Donations_by_Contact_zip_code_all_time2</members>
-        <members>NPSP_Donor_Management_Reports/Donations_this_year_by_Contact_State</members>
-        <members>NPSP_Donor_Management_Reports/Donor_Year_on_Year_Comparison</members>
-        <members>NPSP_Donor_Management_Reports/Household_Giving_by_Range</members>
-        <members>NPSP_Donor_Management_Reports/Household_with_Donations</members>
-        <members>NPSP_Donor_Management_Reports/Households_with_Donations_LYBUNT</members>
-        <members>NPSP_Donor_Management_Reports/Households_with_Donations_SYBUNT</members>
-        <members>NPSP_Donor_Management_Reports/Last_Months_Gifts_by_Donor</members>
-        <members>NPSP_Donor_Management_Reports/Open_Opportunities_By_Stage</members>
-        <members>NPSP_Donor_Management_Reports/Open_Opportunities_Grouped_by_Stage</members>
-        <members>NPSP_Donor_Management_Reports/Organizational_Giving</members>
-        <members>NPSP_Donor_Management_Reports/Organizational_LYBUNT</members>
-        <members>NPSP_Donor_Management_Reports/Organizational_SYBUNT</members>
-        <members>NPSP_Donor_Management_Reports/Payments_Due_Next_30_Days</members>
-        <members>NPSP_Donor_Management_Reports/TOTALGIFTS_by_Household_Zip_This_Year</members>
-        <members>NPSP_Donor_Management_Reports/Top_10_Household_Donors</members>
-        <members>NPSP_Donor_Management_Reports/Top_10_Open_Opportunities</members>
-        <members>NPSP_Donor_Management_Reports/Top_15_Won_Opps</members>
-        <members>NPSP_Donor_Management_Reports/TotalGifts_by_Household_State</members>
-        <members>NPSP_Donor_Management_Reports/TotalGifts_by_Household_Zip</members>
-        <members>NPSP_Donor_Management_Reports/Total_Donations_by_Month</members>
-        <members>NPSP_Donor_Management_Reports/Total_Donations_last_FY</members>
-        <members>NPSP_Donor_Management_Reports/Total_Donations_last_year</members>
-        <members>NPSP_Donor_Management_Reports/Total_Donations_this_FY</members>
-        <members>NPSP_Donor_Management_Reports/Total_Donations_this_year</members>
-        <members>NPSP_Grants_Management_Reports</members>
-        <members>NPSP_Grants_Management_Reports/Grant_Pipeline_Planning</members>
-        <members>NPSP_Grants_Management_Reports/Institutional_Fundraising_Goal_this_year</members>
-        <members>NPSP_Grants_Management_Reports/Organizations_with_Grants</members>
-        <members>NPSP_Grants_Management_Reports/Total_Grants_Received</members>
-        <members>NPSP_Grants_Management_Reports/Total_Grants_Received_This_Year</members>
-        <members>NPSP_Membership_Management_Reports</members>
-        <members>NPSP_Membership_Management_Reports/Current_Membership</members>
-        <members>NPSP_Membership_Management_Reports/Lapsed_Membership_Report</members>
-        <members>NPSP_Membership_Management_Reports/Membership_End_Dates_by_Month</members>
-        <members>NPSP_Membership_Management_Reports/New_Members</members>
-        <members>NPSP_Membership_Management_Reports/Renewing_Members</members>
+        <members>*</members>
         <name>Report</name>
     </types>
     <types>

@@ -38,7 +38,7 @@
           <mkdir dir="${basedir}/installdeploy"/>
           <mkdir dir="${basedir}/installdeploy"/>         
           <mkdir dir="${basedir}/installdeploy/installedPackages"/>
-          <echo file="${basedir}/installdeploy/package.xml"><![CDATA[<Package xmlns="http://soap.sforce.com/2006/04/metadata"><types><members>@{namespace}</members><name>InstalledPackage</name></types><version>29.0</version></Package>]]></echo>
+          <echo file="${basedir}/installdeploy/package.xml"><![CDATA[<Package xmlns="http://soap.sforce.com/2006/04/metadata"><types><members>@{namespace}</members><name>InstalledPackage</name></types><version>${cumulusci.package.apiVersion}</version></Package>]]></echo>
           <echo file="${basedir}/installdeploy/installedPackages/@{namespace}.installedPackage"><![CDATA[<InstalledPackage xmlns="http://soap.sforce.com/2006/04/metadata"><versionNumber>@{version}</versionNumber>${passwordElement}</InstalledPackage>]]></echo>
           <sf:deploy deployRoot="${basedir}/installdeploy" username="@{username}" password="@{password}" maxPoll="500" />
           <delete dir="${basedir}/installdeploy"/>
@@ -56,8 +56,8 @@
           <mkdir dir="${basedir}/installdeploy"/>
           <mkdir dir="${basedir}/installdeploy"/>         
           <mkdir dir="${basedir}/installdeploy/installedPackages"/>
-          <echo file="${basedir}/installdeploy/package.xml"><![CDATA[<Package xmlns="http://soap.sforce.com/2006/04/metadata"><version>29.0</version></Package>]]></echo>
-          <echo file="${basedir}/installdeploy/destructiveChanges.xml"><![CDATA[<Package xmlns="http://soap.sforce.com/2006/04/metadata"><types><members>@{namespace}</members><name>InstalledPackage</name></types><version>29.0</version></Package>]]></echo>
+          <echo file="${basedir}/installdeploy/package.xml"><![CDATA[<Package xmlns="http://soap.sforce.com/2006/04/metadata"><version>${cumulusci.package.apiVersion}</version></Package>]]></echo>
+          <echo file="${basedir}/installdeploy/destructiveChanges.xml"><![CDATA[<Package xmlns="http://soap.sforce.com/2006/04/metadata"><types><members>@{namespace}</members><name>InstalledPackage</name></types><version>${cumulusci.package.apiVersion}</version></Package>]]></echo>
           <echo file="${basedir}/installdeploy/installedPackages/@{namespace}.installedPackage"><![CDATA[<InstalledPackage xmlns="http://soap.sforce.com/2006/04/metadata"><versionNumber>@{version}</versionNumber></InstalledPackage>]]></echo>
           <sf:deploy deployRoot="${basedir}/installdeploy" username="@{username}" password="@{password}" maxPoll="500" />
       </sequential>
@@ -207,7 +207,7 @@
   <macrodef name="buildPackageXmlFromDir" description="Runs through a directory of metadata and builds a package.xml format file from the contents">
     <attribute name="dir" description="The directory containing metadata (i.e. package src)" />
     <attribute name="xmlfile" description="The output file path" />
-    <attribute name="version" description="The value for the version element of the package.xml file to set the api version (i.e. 29.0)" />
+    <attribute name="version" description="The value for the version element of the package.xml file to set the api version (i.e. ${cumulusci.package.apiVersion})" />
     <attribute name="package" description="If provided, a fullName element will be added to the file so it is deployed into a Package in the target org" default="NOTSET" />
     <attribute name="exclude" description="If provided, a list of filenames to skip." default="" />
   	<attribute name="installClass" description="If provided, a installClass element will be added to the file to specify a class to run when installing the package." default="NOTSET" />
@@ -250,6 +250,9 @@
             <case value="pages">
               <property name="typename" value="ApexPage" />
             </case>
+            <case value="quickActions">
+              <property name="typename" value="QuickAction" />
+            </case>
             <case value="remoteSiteSettings">
               <property name="typename" value="RemoteSiteSetting" />
             </case>
@@ -276,7 +279,7 @@
               <for param="file">
                 <path>
                   <!-- exclude xml files and namespaced metadata files as well as any manual excludes -->
-                  <fileset dir="@{typedir}" includes="**/*" excludes="*.xml *__*__c.* @{exclude}" />
+                  <fileset dir="@{typedir}" includes="**/*" excludes="*.xml *__*__c.object @{exclude}" />
                 </path>
                 <sequential>
                   <!-- get basename and basename without suffix for file. propertyregex is used since we don't know the file suffix from only the dir name (i.e. classes vs .class) -->
@@ -493,7 +496,7 @@
       <!-- Create the package.xml to accompany the destructiveChanges.xml -->
       <echo file="@{dir}/package.xml"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
-<version>29.0</version>
+<version>${cumulusci.package.apiVersion}</version>
 </Package>]]></echo>
 
       <!-- initialize the destructiveChanges.xml file -->
@@ -553,7 +556,7 @@
 
       <!-- Finalize the destructiveChanges.xml file -->
       <echo file="@{dir}/destructiveChanges.xml" append="true">${dest.types.xml}</echo>
-      <echo file="@{dir}/destructiveChanges.xml" append="true">  &lt;version&gt;29.0&lt;/version&gt;${line.separator}</echo>
+      <echo file="@{dir}/destructiveChanges.xml" append="true">  &lt;version&gt;${cumulusci.package.apiVersion}&lt;/version&gt;${line.separator}</echo>
       <echo file="@{dir}/destructiveChanges.xml" append="true">&lt;/Package&gt;</echo>
 
       <!-- clean up -->
@@ -577,7 +580,7 @@
       <!-- Create the package.xml to accompany the destructiveChanges.xml -->
       <echo file="@{dir}/package.xml"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
-<version>29.0</version>
+<version>${cumulusci.package.apiVersion}</version>
 </Package>]]></echo>
 
       <!-- Add the package name to the package.xml file -->
@@ -585,7 +588,7 @@
 
       <!-- Build the destructiveChanges.xml file by walking the srcdir and adding all metadata -->
       <!-- Exclude CustomLabels.labels so we can use addMetadataSubType on it instead -->
-      <buildPackageXmlFromDir dir="@{srcdir}" xmlfile="@{dir}/destructiveChanges.xml" version="29.0" exclude="${metadata_whitelist} CustomLabels.labels" />
+      <buildPackageXmlFromDir dir="@{srcdir}" xmlfile="@{dir}/destructiveChanges.xml" version="${cumulusci.package.apiVersion}" exclude="${metadata_whitelist} CustomLabels.labels" />
 
       <!-- Add standard object fields to destructiveChanges.xml -->
       <addMetadataSubType dir="@{srcdir}/objects" xmlfile="@{dir}/destructiveChanges.xml" typename="CompactLayout" element="compactLayouts" />
@@ -614,12 +617,12 @@
       <!-- Create the package.xml to accompany the destructiveChanges.xml -->
       <echo file="@{dir}/unpackaged/package.xml"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
-<version>29.0</version>
+<version>${cumulusci.package.apiVersion}</version>
 </Package>]]></echo>
 
       <!-- Build the destructiveChanges.xml file by walking the unpackaged directory and adding all metadata -->
       <!-- Exclude CustomLabels.labels so we can use addMetadataSubType on it instead -->
-      <buildPackageXmlFromDir dir="@{srcdir}/unpackaged" xmlfile="@{dir}/unpackaged/destructiveChanges.xml" version="29.0" exclude="CustomLabels.labels" />
+      <buildPackageXmlFromDir dir="@{srcdir}/unpackaged" xmlfile="@{dir}/unpackaged/destructiveChanges.xml" version="${cumulusci.package.apiVersion}" exclude="CustomLabels.labels" />
      
       <!-- Copy the package manifest used to retrieve standard objects into srcdir and create an objects subfolder-->
       <copy file="@{srcdir}/standard/package.xml" todir="@{dir}/standard" />
@@ -694,4 +697,120 @@
       <delete file="lib/update_meta_xml.xsl.rendered" />
     </sequential>
   </macrodef>
+
+  <macrodef name="updateMetaXmlApi" description="Updates all apiVersion elements in all *-meta.xml files in target directory">
+    <attribute name="dir" description="The package directory containing the *-meta.xml files to update" />
+    <attribute name="apiVersion" description="The apiVersion value (i.e. 31.0)" />
+    <sequential>
+
+      <for param="file">
+        <path>
+          <fileset dir="@{dir}" includes="**/*-meta.xml" />
+        </path>
+        <sequential>
+          <xslt in="@{file}" out="@{file}.updated" style="lib/update_meta_xml_api.xsl">
+            <param name="apiVersion" expression="@{apiVersion}" />
+          </xslt>
+          <if>
+            <not><filesmatch file1="@{file}" file2="@{file}.updated" /></not>
+            <then>
+              <echo>@{file} updated for @{namespace}</echo>
+              <move file="@{file}.updated" tofile="@{file}" />
+            </then>
+          </if>
+          <delete file="@{file}.updated" />
+        </sequential>
+      </for>
+    </sequential>
+  </macrodef>
+
+  <macrodef name="deployMetadataBundles" description="Deploys all subfolders of a given dir as individual metadata bundles replacing %%%NAMESPACE%%% with either blank or a namespace prefix in all files">
+    <attribute name="dir" description="The parent directory containing subfolders each representing an individual metadata bundle" />
+    <attribute name="stagedir" description="The directory where rendered bundles should be staged for deployment.  This directory is created and deleted by the macro" />
+    <attribute name="nsprefix" description="The string to replace all instances of %%%NAMESPACE%%% in the source files" default="" />
+    
+    <sequential>
+      <if>
+        <available file="@{dir}" type="dir" />
+        <then>
+          <for param="subdir">
+            <path>
+              <dirset dir="@{dir}/" includes="*" />
+            </path>
+            <sequential>
+              <echo>Injecting namespace prefix "@{namespace_prefix}" into bundle @{subdir}</echo>
+
+              <!-- Copy the bundle to the staging directory so we can do the replacement there without affecting the original source files -->
+              <delete dir="@{stagedir}" />
+              <copy todir="@{stagedir}">
+                <fileset dir="@{subdir}"/>
+              </copy>
+              <replaceNamespacePrefix dir="@{stagedir}" nsprefix="@{nsprefix}" />
+                
+              <echo>Deploying unpackaged bundle @{subdir}</echo>
+              <sf:deploy username="${sf.username}" password="${sf.password}" serverurl="${sf.serverurl}" deployRoot="@{stagedir}" runAllTests="false" maxPoll="${cumulusci.maxPoll.notest}" />
+            </sequential>
+          </for>
+        </then>
+      </if>
+    </sequential>
+  </macrodef>
+
+  <macrodef name="zipMetadataBundles" description="Zips all subfolders of a given dir as individual metadata bundles replacing %%%NAMESPACE%%% with either blank or a namespace prefix in all files">
+    <attribute name="dir" description="The parent directory containing subfolders each representing an individual metadata bundle" />
+    <attribute name="stagedir" description="The directory where rendered bundles should be staged for deployment.  This directory is created and deleted by the macro" />
+    <attribute name="zipdir" description="The directory where zipped bundles should be stored" />
+    <attribute name="nsprefix" description="The string to replace all instances of %%%NAMESPACE%%% in the source files" default="" />
+
+    <sequential>
+      <mkdir dir="@{zipdir}" />
+      <if>
+        <available file="@{dir}" type="dir" />
+        <then>
+          <for param="subdir">
+            <path>
+              <dirset dir="@{dir}/" includes="*" />
+            </path>
+            <sequential>
+              <echo>Injecting namespace prefix "@{namespace_prefix}" into bundle @{subdir}</echo>
+
+              <!-- Copy the bundle to the staging directory so we can do the replacement there without affecting the original source files -->
+              <delete dir="@{stagedir}" />
+              <copy todir="@{stagedir}">
+                <fileset dir="@{subdir}"/>
+              </copy>
+              <replaceNamespacePrefix dir="@{stagedir}" nsprefix="@{nsprefix}" />
+            
+              <var name="bundle_dirname" unset="true" />
+              <var name="bundle_dir" unset="true" />
+              <var name="bundle_basename" unset="true" />
+              <dirname property="bundle_dirname" file="@{subdir}" />
+              <basename property="bundle_dir" file="${bundle_dirname}" />
+              <basename property="bundle_basename" file="@{subdir}" />
+
+              <echo>Zipping bundle @{subdir} to @{zipdir}/${bundle_dir}/${bundle_basename}.zip</echo> 
+              <mkdir dir="@{zipdir}/${bundle_dir}" />
+              <zip destfile="@{zipdir}/${bundle_dir}/${bundle_basename}.zip" basedir="@{stagedir}" />
+            </sequential>
+          </for>
+        </then>
+      </if>
+    </sequential>
+  </macrodef>
+
+  <macrodef name="replaceNamespacePrefix" description="Replaces all instances of the string %%%NAMESPACE%%% with the provided namespace prefix in the target directory">
+    <attribute name="dir" description="A directory containing metadata files to inject the namespace into" />
+    <attribute name="nsprefix" description="The string to use for the namespace prefix" />
+    <sequential>
+      <for param="file">
+        <path>
+          <fileset dir="@{dir}/" includes="**/*" />
+        </path>
+        <sequential>
+          <replaceregexp file="@{file}" match="%%%NAMESPACE%%%" replace="@{nsprefix}" flags="g" />
+        </sequential>
+      </for>
+    </sequential>
+  </macrodef>
+
 </project>
