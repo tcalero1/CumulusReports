@@ -155,7 +155,6 @@ npsprep_df14_1: ${InstalledPackage.npsprep_df14_1.versionNumber} (${version.npsp
         <updatePackageVersion namespace="npe03" version="${version.npe03}" />
         <updatePackageVersion namespace="npe4" version="${version.npe4}" />
         <updatePackageVersion namespace="npe5" version="${version.npe5}" />
-        <antcall target="deployUnpackagedPre" />
         <updatePackageVersion namespace="npsp" version="${version.npsp}" />
         <updatePackageVersion namespace="npsprep_df14_1" version="${version.npsprep_df14_1}" />
 
@@ -280,6 +279,8 @@ npsprep_df14_1: ${InstalledPackage.npsprep_df14_1.versionNumber} (${version.npsp
     <target name="deployCIPackageOrg">
       <!-- Update any managed packages which are not at the right version -->
       <antcall target="updateDependentPackages" />
+
+      <antcall target="deployUnpackagedPre" />
 
       <!-- Attempt to destroy any stale metadata but continue even if this fails -->
       <trycatch>

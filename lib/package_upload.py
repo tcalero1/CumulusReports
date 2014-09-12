@@ -206,7 +206,6 @@ class PackageUpload(object):
     def refresh(self):
         sf = SalesforceOAuth2(self.oauth_client_id, self.oauth_client_secret, self.oauth_callback_url)
         refresh_response = sf.refresh_token(self.refresh_token)
-        print refresh_response
         if refresh_response.get('access_token', None):
             self.access_token = refresh_response['access_token']
 
@@ -228,9 +227,6 @@ package = os.environ.get('PACKAGE')
 build_name = os.environ.get('BUILD_NAME')
 build_commit = os.environ.get('BUILD_COMMIT')
 build_workspace = os.environ.get('BUILD_WORKSPACE')
-
-print 'DEBUG: client_id = %s' % oauth_client_id
-print 'DEBUG: callback_url = %s' % oauth_callback_url
 
 uploader = PackageUpload(instance_url, refresh_token, package, oauth_client_id, oauth_client_secret, oauth_callback_url)
 uploader.build_package(build_name)

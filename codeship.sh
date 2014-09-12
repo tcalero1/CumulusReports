@@ -57,14 +57,16 @@ if [ $BUILD_TYPE == "master" ]; then
     export BUILD_NAME="$PACKAGE Build $CI_BUILD_NUMBER"
     export BUILD_WORKSPACE=`pwd`
     export BUILD_COMMIT="$CI_COMMIT_ID"
-    pip install selenium
-    pip install requests
+    pip install --upgrade selenium
+    pip install --upgrade requests
     python lib/package_upload.py
  
     # Test beta
         # Retry if package is unavailable
-        
+       
     # Create GitHub Release
+
+    # Add release notes
     
     # Merge master commit to all open feature branches
 
