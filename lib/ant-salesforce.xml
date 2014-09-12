@@ -240,7 +240,7 @@
               <property name="typename" value="ApexComponent" />
             </case>
             <case value="dashboards">
-              <property name="typename" value="Dashboards" />
+              <property name="typename" value="Dashboard" />
             </case>
             <case value="labels">
               <property name="typename" value="CustomLabel" />
@@ -261,7 +261,7 @@
               <property name="typename" value="RemoteSiteSetting" />
             </case>
             <case value="reports">
-              <property name="typename" value="Reports" />
+              <property name="typename" value="Report" />
             </case>
             <case value="staticresources">
               <property name="typename" value="StaticResource" />

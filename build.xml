@@ -264,9 +264,6 @@ npsprep_df14_1: ${InstalledPackage.npsprep_df14_1.versionNumber} (${version.npsp
       <!-- Update any managed packages which are not at the right version -->
       <antcall target="updateDependentPackages" />
 
-      <!-- Deploy any unpackaged metadata bundles needed before the deployment -->
-      <antcall target="deployUnpackagedPre" />
-
       <!-- Finally, do a deploy with all tests -->
       <antcall target="deploy" />
 
@@ -283,9 +280,6 @@ npsprep_df14_1: ${InstalledPackage.npsprep_df14_1.versionNumber} (${version.npsp
     <target name="deployCIPackageOrg">
       <!-- Update any managed packages which are not at the right version -->
       <antcall target="updateDependentPackages" />
-
-      <!-- Deploy any unpackaged metadata bundles needed before the deployment -->
-      <antcall target="deployUnpackagedPre" />
 
       <!-- Attempt to destroy any stale metadata but continue even if this fails -->
       <trycatch>
@@ -426,7 +420,6 @@ npsprep_df14_1: ${InstalledPackage.npsprep_df14_1.versionNumber} (${version.npsp
       <antcall target="updateDependentPackages" />
 
       <!-- Deploy any unpackaged metadata bundles needed for builds -->
-      <antcall target="deployUnpackagedPre" />
       <antcall target="deployUnpackagedPost" />
 
     </target>
