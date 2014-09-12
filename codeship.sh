@@ -53,7 +53,15 @@ if [ $BUILD_TYPE == "master" ]; then
     ant deployCIPackageOrg
     
     # Upload beta package
-    
+    export PACKAGE=`bash lib/parser.sh cumulusci.package.name.managed cumulusci.properties`
+    export BUILD_NAME=$PACKAGE Build $CI_BUILD_NUMBER
+    export BUILD_WORKSPACE=`pwd`
+    export BUILD_COMMIT=$CI_COMMIT_ID
+    export SELENIUM_URL=http://127.0.0.1:4444/wd/hub
+    export DISPLAY=":22"
+    pip install selenium
+    python lib/package_upload.py
+ 
     # Test beta
         # Retry if package is unavailable
         
