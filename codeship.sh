@@ -6,7 +6,7 @@
 
 # Setup variables for branch naming conventions using env overrides if set
 if [ "$MASTER_BRANCH" == "" ]; then
-
+    MASTER_BRANCH='master'
 fi
 if [ "$PREFIX_FEATURE" == "" ]; then
     PREFIX_FEATURE='feature/'
@@ -34,6 +34,8 @@ if [ "$BUILD_TYPE" == "" ]; then
     exit 1
 fi
 
+echo "Building $CI_BRANCH as a $BUILD_TYPE build"
+
 # Run the build for the build type
 
 # Master branch commit, build and test a beta managed package
@@ -44,7 +46,10 @@ if [ $BUILD_TYPE == "master" ]; then
     export SF_PASSWORD=$SF_PASSWORD_PACKAGING
     export SF_SERVERURL=$SF_SERVERURL_PACKAGING
     
+    echo "Got org credentials for packaging org from env"
+    
     # Deploy to packaging org
+    echo "Running ant deployCIPackageOrg"
     ant deployCIPackageOrg
     
     # Upload beta package
@@ -64,12 +69,15 @@ elif [ $BUILD_TYPE == "feature" ]; then
     export SF_PASSWORD=$SF_PASSWORD_FEATURE
     export SF_SERVERURL=$SF_SERVERURL_FEATURE
     
+    echo "Got org credentials for feature org from env"
+    
     # Deploy to feature org
+    echo "Running ant deployCI"
     ant deployCI
 
 # Beta tag build, do nothing
 elif [ $BUILD_TYPE == "beta" ]; then
-
+    echo "Nothing to do for a beta tag"
 
 # Prod tag build, deploy and test in packaging org
 elif [ $BUILD_TYPE == "prod" ]; then
@@ -79,7 +87,10 @@ elif [ $BUILD_TYPE == "prod" ]; then
     export SF_PASSWORD=$SF_PASSWORD_PACKAGING
     export SF_SERVERURL=$SF_SERVERURL_PACKAGING
     
+    echo "Got org credentials for packaging org from env"
+    
     # Deploy to packaging org
+    echo "Running ant deployCIPackageOrg"
     ant deployCIPackageOrg
     
 fi
