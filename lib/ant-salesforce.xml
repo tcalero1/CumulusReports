@@ -224,7 +224,6 @@
         </path>
         <sequential>
           <basename property="metatype" file="@{typedir}" />
-          <echo>DEBUG: metadata = ${metatype}</echo>
 
           <!-- Map dir name to a metadata type name.  This also serves as a whitelist for which metadata types to add.  If a mapping is not listed, the type is not added to the package.xml -->
           <!-- FIXME: Is there a cleaner way to do this so the mapping could live in a separate file? -->
@@ -291,7 +290,6 @@
                   <fileset dir="@{typedir}" includes="**/*.*" excludes="*.xml *__*__c.object @{exclude}" />
                 </path>
                 <sequential>
-                  <echo>DEBUG: file = @{file}</echo>
                   <var name="component_file" unset="true" />
                   <var name="component_file_dirname" unset="true" />
                   <var name="component_file_parent" unset="true" />
@@ -303,8 +301,6 @@
                   <!-- get the component file's parent directory.  if the parent is not the typedir, include it (i.e. Reports and Dashboards) -->
                   <dirname property="component_file_dirname" file="@{file}" />
                   <basename property="component_file_parent" file="${component_file_dirname}" />
-                  <echo>DEBUG: ${component_file_dirname}</echo>
-                  <echo>DEBUG: ${component_file_parent}</echo>
 
                   <!-- If the file is not in the exclude list, add it to the package.xml -->
                   <if>
