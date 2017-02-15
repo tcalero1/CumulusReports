@@ -1,0 +1,14 @@
+project:
+    name: Cumulus
+
+tasks:
+    retrieve_reports:
+        class_path: cumulusci.tasks.salesforce.RetrieveReportsAndDashboards
+        options:
+            path: src
+            report_folders:
+                - NPSP_Constituent_Reports
+                - NPSP_Dashboard_Reports
+                - NPSP_Fundraising_Reports
+            dashboard_folders:
+                - NPSP_Dashboards
