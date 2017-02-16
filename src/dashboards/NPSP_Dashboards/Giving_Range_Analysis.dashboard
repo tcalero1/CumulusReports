@@ -167,7 +167,6 @@
             <useReportChart>false</useReportChart>
         </components>
     </rightSection>
-    <runningUser>mrbelvedere@template.npsp</runningUser>
     <textColor>#000000</textColor>
     <title>Giving Range Analysis</title>
     <titleColor>#000000</titleColor>
