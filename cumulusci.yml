@@ -2,6 +2,18 @@ project:
     name: Cumulus
 
 tasks:
+
+    deploy_record_types:
+        class_path: cumulusci.tasks.salesforce.Deploy
+        options:
+            path: record_types
+
+    retrieve_other:
+        class_path: cumulusci.tasks.salesforce.RetrieveUnpackaged
+        options:
+            path: other
+            package_xml: retrieve_package.xml
+    
     retrieve_reports:
         class_path: cumulusci.tasks.salesforce.RetrieveReportsAndDashboards
         options:
