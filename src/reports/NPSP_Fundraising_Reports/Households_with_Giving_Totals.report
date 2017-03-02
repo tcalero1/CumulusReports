@@ -42,7 +42,7 @@
             <operator>greaterThan</operator>
             <value>0</value>
         </criteriaItems>
-        <language>en_US</language>
+
     </filter>
     <format>Tabular</format>
     <name>Households with Giving Totals</name>

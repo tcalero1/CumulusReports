@@ -30,7 +30,7 @@
             <operator>notEqual</operator>
             <value>Household Account</value>
         </criteriaItems>
-        <language>en_US</language>
+
     </filter>
     <format>Summary</format>
     <groupingsDown>
