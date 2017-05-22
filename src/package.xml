@@ -6,7 +6,6 @@
     </types>
     <types>
         <members>NPSP_Dashboards</members>
-        <members>NPSP_Dashboards/Development_Analysis</members>
         <members>NPSP_Dashboards/Development_Forecasting</members>
         <members>NPSP_Dashboards/Giving_Range_Analysis</members>
         <members>NPSP_Dashboards/NPSP_Campaign_ROI_Analysis</members>
@@ -29,12 +28,8 @@
         <members>NPSP_Dashboard_Reports/DASH_Expected_Payments_Next_90_Days</members>
         <members>NPSP_Dashboard_Reports/DASH_Giving_Range_Last_Year</members>
         <members>NPSP_Dashboard_Reports/DASH_Giving_Range_Two_Years_Ago</members>
-        <members>NPSP_Dashboard_Reports/DASH_Giving_by_GAU_Last_Three_Years</members>
-        <members>NPSP_Dashboard_Reports/DASH_Giving_by_GAU_This_Year2</members>
         <members>NPSP_Dashboard_Reports/DASH_Giving_by_Households_This_Year</members>
         <members>NPSP_Dashboard_Reports/DASH_Giving_by_Organizations_This_Year</members>
-        <members>NPSP_Dashboard_Reports/DASH_Giving_by_Record_Type_Last_Three_Years</members>
-        <members>NPSP_Dashboard_Reports/DASH_Giving_by_Record_Type_This_Year</members>
         <members>NPSP_Dashboard_Reports/DASH_Household_Gifts_This_Year</members>
         <members>NPSP_Dashboard_Reports/DASH_LYBUNT_Households</members>
         <members>NPSP_Dashboard_Reports/DASH_LYBUNT_Organizations</members>
@@ -53,9 +48,6 @@
         <members>NPSP_Fundraising_Reports/Accounts_by_Best_Gift_Year</members>
         <members>NPSP_Fundraising_Reports/Campaign_ROI_Analysis</members>
         <members>NPSP_Fundraising_Reports/Closed_Won_Opps_Household</members>
-        <members>NPSP_Fundraising_Reports/Closed_Won_Opps_by_Type_GAU_and_FY</members>
-        <members>NPSP_Fundraising_Reports/Closed_Won_Opps_by_Type_and_Fiscal_Year</members>
-        <members>NPSP_Fundraising_Reports/Closed_Won_Opps_by_Type_and_Payment</members>
         <members>NPSP_Fundraising_Reports/Contact_LYBUNT2</members>
         <members>NPSP_Fundraising_Reports/Contact_SYBUNT2</members>
         <members>NPSP_Fundraising_Reports/Contacts_by_Best_Gift_Year</members>
@@ -71,10 +63,8 @@
         <members>NPSP_Fundraising_Reports/Households_with_Giving_Totals</members>
         <members>NPSP_Fundraising_Reports/Lifetime_Account_Gift_Ranges</members>
         <members>NPSP_Fundraising_Reports/Lifetime_Account_by_Level</members>
-        <members>NPSP_Fundraising_Reports/Month_by_Month_Donation_Comparison</members>
         <members>NPSP_Fundraising_Reports/Open_Opportunities</members>
         <members>NPSP_Fundraising_Reports/Opportunities_by_Campaign_Source</members>
-        <members>NPSP_Fundraising_Reports/Opportunities_by_GAU_Allocation</members>
         <members>NPSP_Fundraising_Reports/Opportunities_with_Payments</members>
         <members>NPSP_Fundraising_Reports/Opportunities_with_Unclaimed_Matching</members>
         <members>NPSP_Fundraising_Reports/Paid_Recurring_Donations</members>
